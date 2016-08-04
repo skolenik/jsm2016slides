@@ -1,0 +1,21 @@
+\begin{thebibliography}{xx}
+
+\harvarditem[Choudhry et~al.]{Choudhry, Rao \harvardand\
+  Hidiroglou}{2012}{choudhry:rao:hidiroglou:2012}
+Choudhry, G.~H., Rao, J. N.~K. \harvardand\ Hidiroglou, M.~A.  \harvardyearleft
+  2012\harvardyearright , `On sample allocation for efficient domain
+  estimation', {\em Survey Methodology} {\bf 38}(1),~23--29.
+
+\harvarditem{Neyman}{1934}{neym:1934}
+Neyman, J.  \harvardyearleft 1934\harvardyearright , `On the two different
+  aspects of the representative method: The method of stratified sampling and
+  the method of purposive selection', {\em Journal of the Royal Statistical
+  Society} {\bf 109},~558--606.
+
+\harvarditem{Wright}{2012}{wright:2012}
+Wright, T.  \harvardyearleft 2012\harvardyearright , `The equivalence of
+  {Neyman} optimum allocation for sampling and equal proportions for
+  apportioning the {U.S}. {H}ouse of {R}epresentatives', {\em The American
+  Statistician} {\bf 66}(4),~217--224.
+
+\end{thebibliography}

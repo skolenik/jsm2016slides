@@ -1,0 +1,411 @@
+\documentclass[final,hyperref={pdfpagelabels=false}]{beamer}
+
+\usepackage{amsmath,amsfonts,amsthm,graphicx,harvard,comment}
+
+% \usepackage[absolute,overlay]{textpos}
+
+% \usepackage[orientation=landscape,size=custom,width=90,height=51, debug]{beamerposter}
+% \usepackage[orientation=landscape,size=custom,width=60,height=34, debug]{beamerposter}
+
+% Abt SRBI color theme
+\usecolortheme{bullfinch}
+
+\DeclareMathSymbol{\niceV}{\mathalpha}{AMSb}{"56}
+\DeclareMathSymbol{\niceE}{\mathalpha}{AMSb}{"45}
+\DeclareMathSymbol{\niceB}{\mathalpha}{AMSb}{"42}
+% \newcommand{\beq}{\begin{equation}}
+% \newcommand{\eeq}{\end{equation}}
+\newcommand{\pto}{\stackrel{p}{\longrightarrow}}
+\newcommand{\dto}{\stackrel{d}{\longrightarrow}}
+\newcommand{\Reals}{{\rm I\kern-.25em R}}
+\newcommand{\Cov}{\mathop{\rm Cov}\nolimits}
+\newcommand{\Var}{\mathop{\niceV}\nolimits}
+\newcommand{\Bias}{\mathop{\niceB}\nolimits}
+\newcommand{\Expect}{\mathop{\niceE}\nolimits}
+\newcommand{\Expected}{\Expect}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\trace}{\tr}
+\newcommand{\Prob}{\mathop{\rm Prob}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\corr}{\mathop{\rm corr}\nolimits}
+\newcommand{\Corr}{\mathop{\rm Corr}\nolimits}
+\newcommand{\diag}{\mathop{\rm diag}\nolimits}
+\newcommand{\mixzero}{{\frac 12 \chi^2_0 + \frac 12 \chi^2_1}}
+\newcommand{\rank}{\mathop{\rm rk}\nolimits}
+\newcommand{\bm}[1]{\mbox{\boldmath$#1$}}
+\newcommand{\bfx}{{\bf x}}
+\newcommand{\One}{{\rm 1\kern-.3em I}}
+\renewcommand{\mathbf}[1]{\mbox{\boldmath$#1$}}
+
+\renewcommand{\baselinestretch}{1.3}
+
+% \newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+
+\title{Sampling with minimal strata size requirements}
+
+\author{Stas Kolenikov, Abt SRBI
+\and \\
+Igor Griva, George Mason University}
+\date{JSM 2016}
+\institute{}
+
+% redefine beamer colors
+
+\logo{\includegraphics[height=0.8cm]{abt_srbi_rgb}}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}\frametitle{Problem statement}
+
+\begin{itemize}
+\item Finite population $\mathcal U=\bigcup_h \, \mathcal U_h$
+\item $H$ strata of sizes $N_h$, $\sum_{h=1}^H N_h = N$
+\item Create a sampling design $\mathcal S$:
+    \begin{enumerate}
+        \item total sample size $\sum_{h=1}^H n_h = n$
+        \item minimal strata sizes $m_h$, $n_h \ge m_h \ge 0$
+    \end{enumerate}
+\end{itemize}
+
+Additional $n-\sum_h m_h \ge 0$ units need to
+be distributed across the strata.
+
+\bigskip
+
+A simple generalization: allow for stratum-specific costs $c_h$;
+the study size is then determined by the total budget
+$\sum_h n_h c_h \le C$.
+
+\end{frame}
+
+\begin{frame}\frametitle{Literature}
+
+\begin{itemize}
+\item \citeasnoun{neym:1934} considered sampling with different costs
+\item \citeasnoun{choudhry:rao:hidiroglou:2012} consider a similar allocation problem,
+resort to black box general numeric optimization
+\item \citeasnoun{wright:2012} proposed an interesting connection to elections, presented
+a unit-by-unit algorithm
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Contribution}
+
+\begin{itemize}
+    \item Full consideration of a constrained optimization problem
+    \item Explicit algorithm
+    \item Extensions to more complicated designs (dual-frame RDD)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Example}
+
+\hspace{-0.5cm}
+\begin{tabular}{l|c|cc|ccc}
+                 & Total pop  & Incidence   & $S_h^2$   & $m_h=0$ & $m_h=20$ & $m_h=100$ \\
+        \hline
+            CT   & 3,592,053  & 14.28\%     & 0.122 & 69  &  67   & 100 \\
+            ME   & 1,328,535  & 1.40\%      & 0.014 & 9   &  20   & 100 \\
+            MA   & 6,657,291  & 10.24\%     & 0.092 & 111 &  107  & 100 \\
+            NH   & 1,321,069  & 3.05\%      & 0.030 & 13  &  20   & 100 \\
+            NJ   & 8,874,374  & 18.59\%     & 0.151 & 190 &  183  & 100 \\
+            NY   & 19,594,330 & 18.17\%     & 0.149 & 415 &  400  & 200 \\
+            PA   & 12,758,729 & 6.15\%      & 0.058 & 168 &  163  & 100 \\
+            RI   & 1,053,252  & 13.28\%     & 0.115 & 20  &  20   & 100 \\
+            VT   & 626,358    & 1.63\%      & 0.016 & 5   &  20   & 100 \\
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}\frametitle{At the interactive session\ldots}
+
+\begin{itemize}
+    \item \ldots the slides will be rolling
+    \item \ldots I will walk you through an example in Excel
+    \item \ldots copies of the paper can be obtained
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{References}
+\bibliography{everything}
+\bibliographystyle{agsm}
+\end{frame}
+
+\end{document}
+
+
+
+        \alert<3>{
+        To expand on \citeasnoun{neym:1938} optimal design framework,
+        let the population variance and unit costs be
+        $S_h^2$ and $c_h$ for stratum $h$. If the costs are identical
+        within strata, then the overall budget constraint
+        is automatically replaced by the total sample size constraint.
+        Let us parameterize the stratum sample size as
+        \begin{equation}
+            \label{eq:stratum:size}
+            n_h = m_h + t_h
+        \end{equation}
+        where $t_h\ge 0$. Let the parameter of interest be the
+        population mean $\bar Y = \sum_{i \in \mathcal U} Y_i/N$,
+        estimated by
+        \begin{equation}
+            \bar y_{\rm str} = \sum_h W_h y_h,
+            \quad W_h = N_h/N,
+            \quad y_h = \sum_{i \in \mathcal S_h} y_i/n_h
+        \end{equation}
+        }
+
+        \alert<4>{
+        Then the sample design problem is
+        \begin{align}
+            \Var[ \bar y_{\rm str}]
+               = & \sum_{h=1}^H W_h^2 \frac{S_h^2}{m_h + t_h}
+               \to \min_{\{ t_h \}}
+            \label{eq:design:optimization}
+            \\
+            \mbox{s.t. } & \sum_h c_h (m_h + t_h) = C,
+            \label{eq:design:budget}
+            \\
+            t_h & \ge 0 \mbox{ for all } h
+            \label{eq:design:thge0}
+            \\
+            C & \ge \sum_h c_h m_h
+            \label{eq:budget:interesting}
+        \end{align}
+        for the solution to exist.
+        }
+
+        \alert<5>{
+        See also \citeasnoun{choudhry:rao:hidiroglou:2012}.
+        }
+    \end{block}
+
+\end{textblock}
+
+\begin{textblock}{26}(29,8)
+    \begin{block}{Computation}
+        \begin{enumerate}
+            \item<alert@6> Set the convergence criteria $\epsilon$
+                  (e.g., $\epsilon = C \cdot 10^{-6}$).
+            \item<alert@7> Find the upper bound
+                  $\overline \lambda=\max_h \frac{W_h^2 S_h^2}{c_h m_h^2}$.
+            \item<alert@8> Find the lower bound
+                  $\underline \lambda=\min_h \frac{W_h^2 S_h^2}{c_h m_h^2}$.
+            \item<alert@9> If $C(\underline \lambda) \le C$, none of the constraints
+                    in (\ref{eq:design:thge0}) are binding, and the optimal
+                    allocation is the Neyman-Chuprow allocation.
+                    \label{alg:neyman}
+            \item<alert@10> Set $\lambda^t \leftarrow \overline \lambda$,
+                  $\lambda^b \leftarrow \underline \lambda$,
+                  $k \leftarrow 1$.
+            \item<alert@11> Set $\lambda^{(k)} \leftarrow (\lambda^b + \lambda^t)/2$.
+                  \label{alg:midpoint}
+            \item<alert@12> Compute $t_h(\lambda^{(k)})$ where \begin{equation}
+                        t_h(\lambda) =
+                                \max\Bigl[ \frac{W_h S_h}{\sqrt{\lambda c_h}} - m_h, 0 \Bigr],
+                                h=1, \ldots, H
+                        \label{eq:th}
+                    \end{equation}
+            \item<alert@13> Evaluate the budget constraint $C(\lambda^{(k)})$ where
+                    \begin{equation}
+                        C(\lambda)=\sum_h c_h \bigl[m_h + t_h(\lambda)\bigr]
+                        \label{eq:c:lambda}
+                    \end{equation}
+            \item<alert@14> If $|C-C(\lambda^{(k)})| < \epsilon$,
+                    go to step \ref{alg:last}.
+            \item<alert@15> If the sample size is too large (over budget),
+                  increase $\lambda$:
+                  set $\lambda^b \leftarrow \lambda^{(k)}, k \leftarrow k+1$.
+            \item<alert@16> If the sample size is too small (under budget), decrease $\lambda$:
+                  set $\lambda^t \leftarrow \lambda^{(k)}, k \leftarrow k+1$.
+            \item<alert@17> Re-iterate to step \ref{alg:midpoint}.
+            \item<alert@18> Set $t_h = t_h(\lambda^{(k)})$, rounding up to
+                    the integer part as needed.
+                    \label{alg:last}
+        \end{enumerate}
+    \end{block}
+
+\end{textblock}
+
+\begin{textblock}{26}(85,8)
+    \begin{block}{Technicalities in the paper}
+
+    \alert<24>{
+
+        \begin{itemize}
+            \item Established that the bounds $\overline \lambda, \underline \lambda$
+                contain the Lagrange multiplier for the overall cost constraint
+                (\ref{eq:budget:interesting}) of the constrained optimization problem
+            \item Establish existence and uniqueness of the solution
+            \item Establish convergence of the algorithm
+            \item Establish equivalence to Neymann-Chuprow allocation
+                when none of the minimal sample size constraints are binding
+            \item Extensions for dual frame RDD are considered
+        \end{itemize}
+
+    }
+    \end{block}
+\end{textblock}
+
+\begin{textblock}{26}(57,8)
+    \begin{block}{Mock data}
+    \alert<19>{
+        \begin{tabular}{l|ccc|c}
+                 & Total pop  & Hispanic pop & \% Hispanic & S_h^2 \\
+        \hline
+            CT   & 3,592,053  & 512,795      & 14.28\%     & 0.12238 \\
+            ME   & 1,328,535  & 18,592       & 1.40\%      & 0.01380 \\
+            MA   & 6,657,291  & 681,824      & 10.24\%     & 0.09193 \\
+            NH   & 1,321,069  & 40,301       & 3.05\%      & 0.02958 \\
+            NJ   & 8,874,374  & 1,649,784    & 18.59\%     & 0.15134 \\
+            NY   & 19,594,330 & 3,559,644    & 18.17\%     & 0.14866 \\
+            PA   & 12,758,729 & 784,562      & 6.15\%      & 0.05771 \\
+            RI   & 1,053,252  & 139,832      & 13.28\%     & 0.11514 \\
+            VT   & 626,358    & 10,226       & 1.63\%      & 0.01606 \\
+        \hline
+        \end{tabular}
+        \smallskip
+%        $c_h=1,C=1000$
+    }
+    \end{block}
+\end{textblock}
+
+\begin{textblock}{12}(57,37)
+    \begin{block}{$m_h=1,C=1000$}
+        \centering
+
+        \alert<20>{
+
+        \begin{tabular}{l|cc}
+                 & $t_h(\lambda)$ & $n_h$ \\
+        \hline
+            CT   & 67.87    & 69  \\
+            ME   & 7.55     & 9   \\
+            MA   & 109.62   & 111 \\
+            NH   & 11.45    & 13  \\
+            NJ   & 188.21   & 190 \\
+            NY   & 413.06   & 415 \\
+            PA   & 166.98   & 168 \\
+            RI   & 18.59    & 20  \\
+            VT   & 3.35     & 5   \\
+        \hline
+        \end{tabular}
+    \medskip
+
+    $\underline\lambda=2.02\cdot10^{-6}$
+    $\lambda = 1.069\cdot10^{-7}$
+    $\overline\lambda=0.0183$
+
+    }
+    \end{block}
+\end{textblock}
+
+\begin{textblock}{12}(71,37)
+    \begin{block}{$m_h=20,C=1000$}
+        \centering
+
+        \alert<21>{
+
+        \begin{tabular}{l|cc}
+                 & $t_h(\lambda)$ & $n_h$ \\
+        \hline
+            CT   & 46.49   &  67   \\
+            ME   & 0       &  20   \\
+            MA   & 86.80   &  107  \\
+            NH   & 0       &  20   \\
+            NJ   & 162.67  &  183  \\
+            NY   & 379.73  &  400  \\
+            PA   & 142.17  &  163  \\
+            RI   & 0       &  20   \\
+            VT   & 0       &  20   \\
+        \hline
+        \end{tabular}
+    \smallskip
+
+    $\underline\lambda=5.06\cdot10^{-9}$
+    $\lambda = 1.15\cdot10^{-7}$
+    $\overline\lambda=4.58\cdot10^{-5}$
+
+    }
+    \end{block}
+\end{textblock}
+
+\begin{textblock}{12}(85,37)
+    \begin{block}{$m_h=50,C=1000$}
+        \centering
+
+        \alert<22>{
+
+        \begin{tabular}{l|cc}
+                 & $t_h(\lambda)$ & $n_h$ \\
+        \hline
+            CT   & 7.81     & 58  \\
+            ME   & 0        & 50  \\
+            MA   & 42.86    & 93  \\
+            NH   & 0        & 50  \\
+            NJ   & 108.84   & 159 \\
+            NY   & 297.58   & 348 \\
+            PA   & 91.01    & 142 \\
+            RI   & 0        & 50  \\
+            VT   & 0        & 50  \\
+        \hline
+        \end{tabular}
+    \smallskip
+    $\underline\lambda=8.09\cdot10^{-10}$
+    $\lambda = 1.52\cdot10^{-7}$
+    $\overline\lambda=7.33\cdot10^{-6}$
+
+    }
+    \end{block}
+\end{textblock}
+
+\begin{textblock}{12}(99,37)
+    \begin{block}{$m_h=100,C=1000$}
+        \centering
+
+        \alert<23>{
+
+        \begin{tabular}{l|cc}
+                 & $t_h(\lambda)$ & $n_h$ \\
+        \hline
+            CT   & 0        & 100 \\
+            ME   & 0        & 100 \\
+            MA   & 0        & 100 \\
+            NH   & 0        & 100 \\
+            NJ   & 0        & 100 \\
+            NY   & 99.61    & 200 \\
+            PA   & 0        & 100 \\
+            RI   & 0        & 100 \\
+            VT   & 0        & 100 \\
+        \hline
+        \end{tabular}
+    \smallskip
+    $\underline\lambda=2.02\cdot10^{-10}$
+    $\lambda = 4.6\cdot10^{-7}$
+    $\overline\lambda=1.83\cdot10^{-6}$
+
+    }
+    \end{block}
+\end{textblock}
+
+\begin{textblock}{82}(29,72)
+    \begin{block}{References}
+        \small\alert<25>{
+        \bibliography{everything}
+        \bibliographystyle{agsm}
+        }
+    \end{block}
+\end{textblock}
+
+\end{frame}
+
+\end{document}

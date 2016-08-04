@@ -1,0 +1,174 @@
+% this style was created by Philippe Dreuw and Thomas Deselaers
+% modified by Stas Kolenikov for his needs
+\ProvidesPackage{beamerthemeStas}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{srbired}{RGB}{218,41,28}
+\definecolor{srbigrbr}{RGB}{119,110,100}
+\definecolor{srbisec1}{RGB}{208,211,212}
+\definecolor{srbisec2}{RGB}{195,198,168}
+\definecolor{srbisec3}{RGB}{223,209,167}
+\definecolor{srbisec4}{RGB}{183,201,211}
+\definecolor{srbi3orange}{RGB}{247,150,70}
+\definecolor{srbi3purple}{RGB}{128,100,162}
+\definecolor{srbi3blue}{RGB}{75,172,198}
+\definecolor{srbi3green}{RGB}{155,187,89}
+
+
+\setbeamercolor{structure}{fg=srbigrbr}
+
+\setbeamercolor{section in toc}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=srbired}
+\setbeamercolor{example text}{fg=srbi3blue}
+\setbeamercolor*{palette primary}{fg=srbired,bg=srbisec1}
+\setbeamercolor*{palette secondary}{fg=srbired!90!white,bg=srbisec1!80!white}
+\setbeamercolor*{palette tertiary}{fg=srbired!80!white,bg=srbisec1!60!white}
+\setbeamercolor*{palette quaternary}{fg=srbired,bg=srbisec3}
+
+\setbeamercolor*{sidebar}{fg=srbired,bg=srbisec1}
+
+\setbeamercolor*{palette sidebar primary}{fg=srbired}
+\setbeamercolor*{palette sidebar secondary}{fg=srbigrbr}
+\setbeamercolor*{palette sidebar tertiary}{fg=srbigrbr}
+\setbeamercolor*{palette sidebar quaternary}{fg=srbired}
+
+\setbeamercolor{titlelike}{fg=srbired}
+\setbeamercolor{frametitle}{bg=srbired,fg=white}
+\setbeamercolor{frametitle right}{bg=srbired,fg=black}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+%%% end of colors defined by Stas
+
+\setbeamercolor{headline}{fg=srbired,bg=white}
+\setbeamercolor{footline}{fg=srbisec1, bg=white}
+\setbeamerfont{footline}{size=\large}
+\setbeamercolor{separation line}{bg=srbigrbr}
+\setbeamercolor{title in headline}{fg=srbired}
+\setbeamercolor{author in headline}{fg=srbigrbr}
+\setbeamercolor{institute in headline}{fg=srbigrbr}
+
+\setbeamercolor{framesubtitle}{fg=srbired, bg=srbisec1}
+\setbeamercolor{author in head/foot}{fg=srbisec1, bg=white}
+\setbeamercolor{title in head/foot}{fg=srbigrbr, bg=white}
+
+\setbeamercolor*{normal text}{fg=black, bg=white}
+\setbeamercolor*{block body}{bg=srbisec1,fg=black}
+\setbeamercolor*{block title}{fg=srbired,bg=srbisec1}
+\setbeamerfont{block title}{size=\large,series=\bf}
+\setbeamercolor{upper separation line head}{fg=srbigrbr}
+
+\setbeamercolor*{example body}{bg=srbisec1,fg=black}
+\setbeamercolor*{example text}{fg=black, bg=white}
+\setbeamercolor*{example title}{fg=srbisec1,bg=srbigrbr}
+
+\setbeamercolor{alerted text}{bg=srbisec1,fg=white}
+
+\setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{navigation symbols}{}  % no navigation on a poster
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{block begin}{
+  \vskip.75ex
+  \begin{beamercolorbox}[rounded=true,shadow=true,leftskip=1cm,colsep*=.75ex]{block title}%
+    \usebeamerfont*{block title}\insertblocktitle
+  \end{beamercolorbox}%
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[rounded=true,shadow=true,colsep*=.75ex,sep=.75ex,vmode]{block body}%
+    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+  }
+  \setbeamertemplate{block end}{
+  \end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{headline}{
+  \leavevmode
+
+  \begin{beamercolorbox}[wd=\paperwidth]{headline}
+    \begin{columns}[T]
+      \begin{column}{.02\paperwidth}
+      \end{column}
+%      \begin{column}{.07\paperwidth}
+%        \begin{center}
+%          %\includegraphics[width=.6\linewidth]{logos/i6-hks44}
+%        \end{center}
+%        \vskip1ex
+%      \end{column}
+      \begin{column}{.75\paperwidth}
+        \vskip4ex
+        \raggedleft
+        \usebeamercolor{title in headline}{\color{fg}\textbf{\Huge{\inserttitle}}\\[1ex]}
+        \usebeamercolor{author in headline}{\color{fg}\LARGE{\insertauthor}\\[1ex]}
+      \end{column}
+      \begin{column}{.08\paperwidth}
+        \vskip1cm
+        \begin{center}
+          \includegraphics[scale=0.5]{abt_srbi_logo_tag_A_rgb}
+        \end{center}
+        \vskip1.5cm
+      \end{column}
+      \begin{column}{.03\paperwidth}
+      \end{column}
+    \end{columns}
+  \end{beamercolorbox}
+
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
+    \rule{0pt}{2pt}
+  \end{beamercolorbox}
+}
+
+%  \setbeamertemplate{headline}{
+%    \leavevmode
+%    \begin{beamercolorbox}[sep=0.5cm,wd=.8\paperwidth]{headline}
+%      \usebeamercolor{title in headline}{\raggedleft\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
+%      \usebeamercolor{author in headline}{\raggedleft\color{fg}\large{\insertauthor}\\[1ex]}
+%      \usebeamercolor{institute in headline}{\raggedleft\color{fg}\large{\insertinstitute}\\[1ex]}
+%    \end{beamercolorbox}%
+%    \begin{beamercolorbox}[wd=.2\paperwidth]{logo in headline}
+%      \centering
+%      \LARGE{LOGO}
+%    \end{beamercolorbox}
+
+
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
+    \rule{0pt}{2pt}
+  \end{beamercolorbox}
+
+  \leavevmode%
+  \begin{beamercolorbox}[ht=4ex,leftskip=1cm,rightskip=1cm]{author in head/foot}%
+    \texttt{http://www.abtsrbi.com @AbtSRBI}
+    \hfill
+    \texttt{kolenikovs@srbi.com}
+    \vskip1ex
+  \end{beamercolorbox}
+  \vskip0pt%
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line foot}
+    \rule{0pt}{2pt}
+  \end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Display a grid to help align images ... and it looks nice with this color scheme
+%\beamertemplategridbackground[1cm]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<all>
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-master: "poster"
+%%% End:
